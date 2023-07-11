@@ -25,7 +25,7 @@ docker run -d -p 5000:5000 dic-assignment
 
 # Part 3
 
-1. Launch an EC2 instance (AWS LINUX, 64-bit(Arm), 18gb RAM or 8GB RAM, 16GB storage, allow ssh and http trafic from anywhere)
+1. Launch an EC2 instance (AWS LINUX, 64-bit(Arm), 16gb RAM or 8GB RAM, 16GB storage, allow ssh and http trafic from anywhere)
 2. Connect to EC2 instance by SSH `ssh -i labsuser.pem ec2-user@[pub-ip]`
 3. Configure instance like below:
 ### remote pre-setup: 
@@ -35,15 +35,19 @@ ssh-keygen
 cat /home/ec2-user/.ssh/id_rsa.pub
 # copy key to github ssh keys 
 # then get ssh link for repo
-git clone git@github.com:orihash/grou48_DIC_Ex3.git
+git clone git@github.com:orihash/group48_DIC_Ex3.git
 
-cd grou48_DIC_Ex3
+cd group48_DIC_Ex3
 sudo systemctl start docker
 
-Before building the image we had to make changes to requirements file by adding
-`tensorflow-io==0.25.0`
-and to app.py 
+Before building the image we had to make changes to 
+
+* requirements.txt 
+file by adding `tensorflow-io==0.25.0`
+* app.py 
 by specifying the `port=80`
+* Dockerfile
+by adding EXPOSE 80
 
 ### setup docker image
 
