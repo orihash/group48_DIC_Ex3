@@ -12,6 +12,7 @@ def post_images(input_data, url):
 
     Args: input_data(dict): contains list of images as base64
         encoded Strings and timestamp which records the start of uploading time.
+        url: host url where to send the request.
 
     Returns:
         response(json): response as json containing detections boxes, inference time, upload time etc.
