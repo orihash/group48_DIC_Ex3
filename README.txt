@@ -4,7 +4,6 @@ app.py - contains code base for running the mobilenet_v2 pre-trained model for o
 client.py - contains code base for posting the images to the server (can post one image or a folder of images) `run client.py --help for more`
 requirement.txt - file with libraries needed to run the program
 Dockerfile - file with specifications to build a docker container
-object-detection-SMALL - directory that holds 4 images for testing purposes
 
 # Part 1
 
@@ -54,7 +53,7 @@ sudo docker build -t dic .
 #Run the container
 sudo docker run -p 80:80 dic
 
-Then from local machine you run the client.py passing the arguments for images folder and host 
+4. Then from local machine you run the client.py passing the arguments for images folder and host 
 
 example for one image:
 `python client.py --host http://[pub-ip]:80/api/detect  --images_path /Users/orahashani/Documents/group48_DIC_Ex3/object-detection-SMALL/000000146486.jpg`
