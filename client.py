@@ -6,7 +6,7 @@ import requests
 import argparse
 
 
-def post_images(input_data):
+def post_images(input_data, url):
     """
     Makes a post request to the server with the input data.
 
@@ -18,7 +18,7 @@ def post_images(input_data):
 
     """
     json_data = json.dumps(input_data)
-    response = requests.post("http://localhost:5000/api/detect", data=json_data)
+    response = requests.post(url, data=json_data)
     return response
 
 
@@ -26,6 +26,7 @@ if __name__ == "__main__":
     # Specifying CLI arguments
     parser = argparse.ArgumentParser(description='A test program.')
     parser.add_argument("--images_path", help="Path to image directory or to a single image.", default="object-detection-SMALL")
+    parser.add_argument("--host", help="host(url) where to post the images aws http://[pub-ip]:80/endpoint or local(default)", default="http://localhost:5000/api/detect")
     args = parser.parse_args()
 
     # image array which will be filled with base64 encoded Strings of images
@@ -49,5 +50,5 @@ if __name__ == "__main__":
         'timestamp': time.time()
     }
 
-    res = post_images(data)
+    res = post_images(data, args.host)
     print(res.json())
